@@ -1,3 +1,4 @@
+/* General styling */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +14,7 @@ body {
     color: blanchedalmond;
     height: 100%;
     line-height: 1;
-    font-family:  Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -21,7 +22,7 @@ h1 {
     background-color: linear-gradient(to bottom, royalblue, lightblue);
     color: rgb(255, 255, 255);
     text-align: center;
-
+    border-radius: 0 0 30px 30px;
 }
 
 h2 {
@@ -32,7 +33,6 @@ h2 {
     border-radius: 10px;
 }
 
-
 p {
     font-size: 200%;
     margin: 10px;
@@ -42,21 +42,40 @@ p {
     border-radius: 10px;
     text-align: center;
 }
-button {
-    margin: 10px;
+
+/* Search bar styling */
+.search-bar {
+    width: 80%;
     padding: 10px;
-    background-color: rgba(61, 83, 117, 0.5);
+    margin: 10px auto;
+    border: 2px solid #3d5375;
     border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    display: block;
+}
+
+.search-bar::placeholder {
+    color: #888;
+}
+
+.search-button {
+    padding: 10px 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: rgba(61, 83, 117, 0.5);
     color: white;
-    font-size: 100%;
     font-weight: bold;
     cursor: pointer;
+    font-size: 1rem;
+    display: block;
     border: none;
-    float: right;
-    &:hover {
-        background-color: rgba(45, 187, 168, 0.8);
-        font-weight: bolder;
-    }
+}
+
+.search-button:hover {
+    background-color: rgba(45, 187, 168, 0.8);
+    font-weight: bolder;
 }
 
 #results {
@@ -64,21 +83,25 @@ button {
     justify-content: left;
     float: left;
     flex-direction: column;
-    ul{
-        display: inline-block;
-        list-style: none;
-        padding: 10px;
-        li {
-            margin: 10px;
-            padding: 10px;
-            background-color: rgba(61, 83, 117, 0.5);
-            border-radius: 10px;
-            cursor: pointer;
-            &:hover {
-                background-color: rgba(45, 187, 168, 0.575);
-            }
-        }
-    }
+}
+
+#results ul {
+    display: inline-block;
+    list-style: none;
+    padding: 10px;
+}
+
+#results ul li {
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(61, 83, 117, 0.5);
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+#results ul li:hover {
+    background-color: rgba(45, 187, 168, 0.575);
 }
 
 #map {
