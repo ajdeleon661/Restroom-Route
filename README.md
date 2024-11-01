@@ -41,18 +41,6 @@ WHEN I look at the list of restrooms
 
 THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.)
 
-WHEN I see the name of the facility
-
-THEN I see distance from me under the name 
-
-WHEN I adjust preference for a larger search radius on results page
-
-THEN more results for restrooms will be presented
-
-WHEN I adjust preference for a smaller search radius on results page
-
-THEN results for restrooms outside of the new restroom radius will be excluded
-
 WHEN I click on a restroom
 
 THEN it will adjust the map to show that location
