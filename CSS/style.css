@@ -10,26 +10,23 @@ html {
 }
 
 body {
-    background: linear-gradient(to bottom, lightblue, white);
-    color: blanchedalmond;
+    background: lightblue;
+    color: white;
     height: 100%;
     line-height: 1;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-h1 {
-    padding: 40px;
-    background-color: linear-gradient(to bottom, royalblue, lightblue);
-    color: rgb(255, 255, 255);
+    padding: 10px;
     text-align: center;
-    border-radius: 0 0 30px 30px;
 }
 
+
+/* Navigation styling */
 h2 {
     font-size: 90%;
     padding: 20px;
     margin-left: 20px;
     background-color: rgba(61, 83, 117, 0.5);
+    color: white;
     border-radius: 10px;
 }
 
@@ -106,4 +103,9 @@ p {
 
 #map {
     height: 70%;
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid #3d5375;
+    border-radius: 10px;
+
 }
