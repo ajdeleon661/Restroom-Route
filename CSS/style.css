@@ -10,15 +10,14 @@ html {
 }
 
 body {
-    background: lightblue;
+    background: linear-gradient(to bottom, rgb(64, 135, 216) 25%, lightblue 75%);
     color: white;
     height: 100%;
     line-height: 1;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     padding: 10px;
     text-align: center;
 }
-
 
 /* Navigation styling */
 h2 {
@@ -34,7 +33,6 @@ p {
     font-size: 200%;
     margin: 10px;
     padding: 30px 20px;
-    background: linear-gradient(to bottom, rgb(64, 135, 216), lightblue);
     color: white;
     border-radius: 10px;
     text-align: center;
@@ -50,7 +48,7 @@ p {
     font-size: 1rem;
     color: #333;
     text-align: center;
-    display: block;
+    display: inline-flex;
 }
 
 .search-bar::placeholder {
@@ -107,5 +105,4 @@ p {
     margin: 10px auto;
     border: 2px solid #3d5375;
     border-radius: 10px;
-
 }
