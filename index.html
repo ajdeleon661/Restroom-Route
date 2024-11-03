@@ -4,39 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
-    <title>Bathroom Locator</title>
-    <!-- Google Maps API Script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKVO0gLbjKvibOm6rxkhG23abD2DbeRm0&callback=initMap" async defer></script>
+    <title>Restroom Route</title>
 </head>
 <body>
     <h1 class="text-5xl bg-lightblue rounded-lg font-bold">Welcome to the Bathroom Locator</h1>
-    
-    <p>Find the nearest bathroom with ease!</p>
+    <p>Find the Nearest Bathroom with Ease!</p>
     
     <!-- Search by Address Section -->
     <div>
-        <input type="text" id="address-input" placeholder="Enter Address">
-        <button id="address-search-btn">Search by Address</button>
+        <input type="text" id="location-input" placeholder="Enter Another Location">
+        <button id="location-search-btn">Search</button>
     </div>
-
-    <!-- Search Near Me Button -->
-    <button id="near-me-btn">Search Near Me</button>
     
     <!-- Results Section -->
     <aside id="results">
         <h2>Results</h2>
         <ul>
-            <li>location 1</li>
-            <li>location 2</li>
-            <li>location 3</li>
-            <li>location 4</li>
+            <!-- Results will be inserted here -->
         </ul>
-    </aside>
+    </aside>    
     
     <!-- Map Container -->
     <div id="map"></div>
 
     <!-- Custom JavaScript -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKVO0gLbjKvibOm6rxkhG23abD2DbeRm0&loading=async&libraries=places&callback=initMap" async defer></script>
     <script src="JavaScript/script.js"></script>
 </body>
 </html>
