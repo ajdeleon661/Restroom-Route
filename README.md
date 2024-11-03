@@ -15,44 +15,28 @@ GIVEN a website to show restrooms near me
 
 WHEN I load the website
 
-THEN a landing page containing the name of the website, a search bar for location with a search button at the end of the bar, a distance button with options for distances appears
+THEN a landing page containing the name of the website, a button titled "Find Bathrooms" 
 
-WHEN I click the distance button
+WHEN I click the "Find Bathrooms" button
 
-THEN I am presented with options for a distance from location I entered, ranging from 0.5 mile, 1 mile, 2 mile, 5 mile, or 10 mile radius
+THEN I am taken to the next page of the website
 
-WHEN I enter my preferences for maximum distance
+WHEN I am on the next page
 
-THEN only results with a distance less than the maximum I choose will be presented
+THEN I am presented with a title of the website, a search bar, an option to "Search by Address" or "Search Near Me", a live map centered on the page below the search bar, and a results column on the left 
 
-WHEN I search a location near me
+WHEN I search a location near me bt entering an address in the search bar
 
-THEN results given within specified distance are presented on a new page
+THEN I can click on the "Search by Address" button and have it load addresses of restrooms near me
 
-WHEN I look at restroom results on the new page
+WHEN the addresses are loaded on the page
 
-THEN I see a map with locations taking a majority of the page
+THEN the addresses are presented under the "Results"
 
-WHEN I look to the left of the map on the results page
+WHEN I look at the list of restrooms under "Results"
 
-THEN I see a list of the restrooms
+THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address
 
-WHEN I look at the list of restrooms
+WHEN I click on a marker on the map
 
-THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.)
-
-WHEN I see the name of the facility
-
-THEN I see distance from me under the name 
-
-WHEN I adjust preference for a larger search radius on results page
-
-THEN more results for restrooms will be presented
-
-WHEN I adjust preference for a smaller search radius on results page
-
-THEN results for restrooms outside of the new restroom radius will be excluded
-
-WHEN I click on a restroom
-
-THEN it will adjust the map to show that location
+THEN it will give the address of that location
