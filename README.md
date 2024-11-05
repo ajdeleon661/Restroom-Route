@@ -31,8 +31,10 @@ THEN I can click on the "Search by Address" button and have it load addresses of
 
 WHEN the addresses are loaded on the page
 
-THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address
+THEN I see name of the facility (Starbucks, park restroom, business park building, etc.) as well as it's address
 
 WHEN I click on a marker on the map
 
 THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address
+
+https://ajdeleon661.github.io/Restroom-Route/
