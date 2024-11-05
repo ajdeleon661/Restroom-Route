@@ -58,23 +58,6 @@ p {
     line-height: 1;
 }
 
-/* Search bar styling */
-/*.search-bar {
-    width: 80%;
-    padding: 10px;
-    margin: 10px auto;
-    border: 2px solid #3d5375;
-    border-radius: 10px;
-    font-size: 1rem;
-    color: #333;
-    text-align: center;
-    display: inline-flex;
-}
-
-.search-bar::placeholder {
-    color: #888;
-}*/
-
 #address-input {
     width: 30%;
     padding: 10px;
@@ -103,8 +86,6 @@ p {
     background-color: rgb(244, 248, 248);
     border-color: rgb(24, 144, 224);
     color:rgb(24, 144, 224)
-
-    
 }
 
 #near-me-btn{
@@ -122,28 +103,8 @@ p {
 #near-me-btn:hover{
     background-color: rgb(244, 248, 248);
     border-color: rgb(24, 144, 224);
-    color:rgb(24, 144, 224);
+    color:rgb(24, 144, 224)
 }
-
-/*
-.search-button {
-    padding: 10px 20px;
-    margin: 10px auto;
-    border-radius: 10px;
-    background-color: rgba(61, 83, 117, 0.5);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    display: block;
-    border: none;
-}
-
-.search-button:hover {
-    background-color: rgba(45, 187, 168, 0.8);
-    font-weight: bolder;
-}
-*/
 
 /* Results styling */
 
