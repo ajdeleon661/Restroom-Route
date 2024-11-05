@@ -2,6 +2,12 @@ const REFUGE_API_URL = "https://www.refugerestrooms.org/api/v1/restrooms";
 let map;
 let startingPosition = { lat: 34.0549, lng: -118.2426 };
 
+// Dark Mode
+const darkModeToggle = document.getElementById("dark-mode-btn");
+darkModeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
 window.addEventListener("beforeunload", function() {
     localStorage.clear();
 });
