@@ -1,71 +1,75 @@
-const REFUGE_API_URL = "https://www.refugerestrooms.org/api/v1/restrooms";
 let map;
 let startingPosition = { lat: 34.0549, lng: -118.2426 };
+const REFUGE_RESTROOMS_URL = "https://www.refugerestrooms.org/api/v1/restrooms";
+let markers = [];
 
 // Initialize Google Map
-async function initMap() {
-    const { Map } = await google.maps.importLibrary("maps");
-
-    map = new Map(document.getElementById("map"), {
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
         center: startingPosition,
         zoom: 12,
     });
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            map.setCenter({ lat, lng });
+            fetchCurrentRestrooms(lat, lng,);
+        }
+    );
 }
 
-// Fetch bathrooms by latitude and longitude
-async function fetchBathrooms(lat, lng, numResults = 10) {
+async function fetchCurrentRestrooms(lat, lng, numResults = 5) {
     try {
-        const response = await fetch(`${REFUGE_API_URL}/by_location?lat=${lat}&lng=${lng}&per_page=${numResults}`);
-        const bathrooms = await response.json();
-        displayBathrooms(bathrooms);
+        const response = await fetch(`${REFUGE_RESTROOMS_URL}/by_location?lat=${lat}&lng=${lng}&per_page=${numResults}`);
+        const restrooms = await response.json();
+        displayRestrooms(restrooms);
     } catch (error) {
-        console.error("Error fetching bathrooms:", error);
+        console.error("Error fetching restrooms:", error);
     }
 }
 
-// Display bathrooms as markers on the map
-function displayBathrooms(bathrooms) {
+// Display Restrooms as Markers on the Map
+function displayRestrooms(restrooms) {
     const resultsList = document.getElementById("results").querySelector("ul");
-    resultsList.innerHTML = ""; // Clear previous results
+    resultsList.innerHTML = "";
+    saveSearchResults(restrooms);
 
-    bathrooms.forEach(bathroom => {
-        const lat = bathroom.latitude;
-        const lng = bathroom.longitude;
+    restrooms.forEach(restroom => {
+        const lat = restroom.latitude;
+        const lng = restroom.longitude;
 
         // Create marker
         const marker = new google.maps.Marker({
             position: { lat, lng },
             map: map,
-            title: bathroom.name
+            title: restroom.name,
         });
-
-        // Add info window to each marker
         const infoWindow = new google.maps.InfoWindow({
-            content: `<h3>${bathroom.name}</h3><p>${bathroom.street}, ${bathroom.city}</p><p>Unisex: ${bathroom.unisex ? "Yes" : "No"}</p>`
+            content: `<h3>${restroom.name}</h3><p>${restroom.street}, ${restroom.city}</p>`,
         });
-
         marker.addListener("click", () => {
             infoWindow.open(map, marker);
         });
 
-        // Append location to results list
+    // Append location to results list
         const listItem = document.createElement("li");
         listItem.textContent = `${bathroom.name} - ${bathroom.street}, ${bathroom.city}, ${bathroom.distance.toFixed(2)} miles`;
         resultsList.appendChild(listItem);
     });
 }
 
-// Geocode address and fetch bathrooms at location
-async function fetchBathroomsByAddress(address) {
+    // Geocode address and fetch restrooms at location
+async function fetchRestroomsByLocation(location) {
     try {
-        // Use the Google Geocoding API to convert address to coordinates
-        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBKVO0gLbjKvibOm6rxkhG23abD2DbeRm0`);
+        // Google Geocoding API to convert address to coordinates
+        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyBKVO0gLbjKvibOm6rxkhG23abD2DbeRm0`);
         const data = await response.json();
 
         if (data.status === "OK") {
             const lat = data.results[0].geometry.location.lat;
             const lng = data.results[0].geometry.location.lng;
-            fetchBathrooms(lat, lng); // Fetch and display bathrooms at the geocoded location
+            fetchCurrentRestrooms(lat, lng); // Fetch and display bathrooms at the geocoded location
             map.panTo({ lat, lng });
         } else {
             alert("Location not found. Please try another address.");
@@ -75,44 +79,25 @@ async function fetchBathroomsByAddress(address) {
     }
 }
 
-// Event listener for "Search Near Me" button with detailed error handling
-document.getElementById("near-me-btn").addEventListener("click", () => {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            fetchBathrooms(lat, lng); // Fetch bathrooms near user's location
-            map.panTo({ lat, lng });
-        },
-        (error) => {
-            // Detailed error logging
-            console.error(`Error getting location: ${error.message} (Code: ${error.code})`);
-            switch (error.code) {
-                case 1:
-                    alert("Permission denied. Please allow location access.");
-                    break;
-                case 2:
-                    alert("Position unavailable. Check your internet connection or try again later.");
-                    break;
-                case 3:
-                    alert("Location request timed out. Please try again.");
-                    break;
-                default:
-                    alert("Unable to retrieve location. Please try searching by address.");
-            }
-        }
-    );
-});
-
-// Event listener for "Search by Address" button
-document.getElementById("address-search-btn").addEventListener("click", () => {
-    const address = document.getElementById("address-input").value;
-    if (address) {
-        fetchBathroomsByAddress(address); // Fetch bathrooms by the entered address
+// Event listener for "Search" button
+document.getElementById("location-search-btn").addEventListener("click", () => {
+    const location = document.getElementById("location-input").value;
+    if (location) {
+        fetchRestroomsByLocation(location); // Fetch bathrooms by the entered address
     } else {
-        alert("Please enter an address.");
+        alert("Please enter a Location.");
     }
 });
 
-// Initialize map on load
-initMap();
+// Save search results to local storage
+function saveSearchResults(restrooms) {
+    localStorage.setItem("restrooms", JSON.stringify(restrooms));
+}
+
+function loadSavedResults() {
+    const savedResults = localStorage.getItem("restrooms");
+    if (savedResults) {
+        const restrooms = JSON.parse(savedResults);
+        displayRestrooms(restrooms);
+    }
+}
