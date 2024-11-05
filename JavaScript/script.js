@@ -50,7 +50,7 @@ function displayBathrooms(bathrooms) {
 
         // Append location to results list
         const listItem = document.createElement("li");
-        listItem.textContent = `${bathroom.name} - ${bathroom.street}, ${bathroom.city}`;
+        listItem.textContent = `${bathroom.name} - ${bathroom.street}, ${bathroom.city}, ${bathroom.distance.toFixed(2)} miles`;
         resultsList.appendChild(listItem);
     });
 }
