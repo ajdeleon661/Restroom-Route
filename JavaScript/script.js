@@ -2,6 +2,10 @@ const REFUGE_API_URL = "https://www.refugerestrooms.org/api/v1/restrooms";
 let map;
 let startingPosition = { lat: 34.0549, lng: -118.2426 };
 
+window.addEventListener("beforeunload", function() {
+    localStorage.clear();
+});
+
 // Initialize Google Map
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
