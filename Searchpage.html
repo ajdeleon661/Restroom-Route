@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Restroom Route</title>
+</head>
+<body>
+    <h1 class="text-5xl bg-lightblue rounded-lg font-bold">Welcome to Restroom Routes</h1>
+    <button id="dark-mode-btn">Dark Mode</button>
+    <p>Find the Nearest Restroom with Ease!</p>
+    
+    <!-- Search by Address Section -->
+    <div>
+        <input type="text" id="address-input" placeholder="Enter Address">
+        <button id="address-search-btn">Search</button>
+        <button id="near-me-btn">Near Me</button>
+
+    </div>
+    
+    <!-- Results Section -->
+    <aside id="results">
+        <ul>
+            
+        </ul>
+    </aside>    
+    
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKVO0gLbjKvibOm6rxkhG23abD2DbeRm0&loading=async&libraries=places&callback=initMap" async defer></script>
+    <script src="JavaScript/script.js"></script>
+</body>
+</html>
