@@ -31,12 +31,8 @@ THEN I can click on the "Search by Address" button and have it load addresses of
 
 WHEN the addresses are loaded on the page
 
-THEN the addresses are presented
-
-WHEN I look at the list of restrooms
-
-THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address and distance from my location
+THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address
 
 WHEN I click on a marker on the map
 
-THEN it will give the address of that location
+THEN I see name of the facility (Sarbucks, park restroom, business park building, etc.) as well as it's address
